@@ -1,0 +1,22 @@
+{
+  "name": "TrafficAnalyzer",
+  "version": "0.0.2",
+  "description": "Turn traffic data into a CSV",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "nodemon src/main.js --exec babel-node --presets env",
+    "build": "babel src -d dist --preset env",
+    "serve": "node dist/main.js"
+  },
+  "dependencies": {
+    "@google/maps": "^0.4.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "csv-reader": "^1.0.1",
+    "csv-write-stream": "2.0.0",
+    "ws": "^3.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
