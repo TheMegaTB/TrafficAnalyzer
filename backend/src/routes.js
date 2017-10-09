@@ -17,6 +17,22 @@ export function getRoute(routeName, directionIndex) {
     return route[directionIndex];
 }
 
+export function getRouteMap() {
+    const routeMap = {};
+
+    for (let route in routes) {
+        if (!routes.hasOwnProperty(route)) continue;
+        routeMap[route] = routes[route].map((direction) => {
+            return {
+                "from": direction.from,
+                "to": direction.to
+            };
+        });
+    }
+
+    return routeMap;
+}
+
 async function populateRoute(routeName, origin, destination) {
     console.log(`Route '${routeName}' from ${origin.name} -> ${destination.name}`);
 
@@ -58,7 +74,7 @@ export function tickRoutes() {
 
                 console.log("Got new datapoint: ", datapoint);
                 // Push the new datapoint into memory
-                route.datapoints.push(datapoint);
+                route.datapoints.push(Object.values(datapoint));
                 // And store it on the disk (inside the CSV)
                 writeToCSV(`routes/${routeName}/${route.from.name}-${route.to.name}.csv`, datapoint);
             } catch (error) {

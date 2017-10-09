@@ -3,9 +3,9 @@
     "key": "AIzaSyC64T89F5CfSQLEcXzl3za9aMFXnQia0Jw"
   },
   "routes": {
-    "workRoute": [
-      { "name": "home", "location": "Julius-Weltzien Strasse 9, 21502 Geesthacht" },
-      { "name": "work", "location": "PPI AG Hamburg" }
+    "Commute": [
+      { "name": "Home", "location": "Julius-Weltzien Strasse 9, 21502 Geesthacht" },
+      { "name": "Work", "location": "PPI AG Hamburg" }
     ]
   },
   "websocket": {
