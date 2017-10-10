@@ -4,3 +4,10 @@ html, body, #app {
     margin: 0;
     overflow: hidden;
 }
+
+g[class^="c3-circles-"][class$="-ema"] {
+    display: none;
+}
+.c3-circles-EMA {
+    display: none;
+}

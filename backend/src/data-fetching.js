@@ -25,10 +25,13 @@ export async function getTravelObject(from, to) {
     const now = new Date();
     const weekday = now.getDay();
     const secondsSinceMidnight = now.getSeconds() + (60 * now.getMinutes()) + (60 * 60 * now.getHours());
+    const onejan = new Date(now.getFullYear(), 0, 1);
 
     return {
         "weekday": weekday,
         "hours": secondsSinceMidnight / 60 / 60,
-        "duration": await getTravelTime(from, to) / 60
+        "duration": await getTravelTime(from, to) / 60,
+        "week": Math.ceil( (((now - onejan) / 86400000) + onejan.getDay() + 1) / 7 ),
+        "year": now.getFullYear()
     };
 }

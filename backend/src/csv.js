@@ -5,7 +5,7 @@ const csvReader = require('csv-reader');
 export function writeToCSV(filename, object) {
     let writer;
     if (!fs.existsSync(filename))
-        writer = csvWriter({ headers: ["weekday", "hours", "duration"]});
+        writer = csvWriter({ headers: ["weekday", "hours", "duration", "week", "year"]});
     else
         writer = csvWriter({sendHeaders: false});
 

@@ -21,24 +21,25 @@ class RoutesList extends React.Component {
         return (
             <div className={classes.root}>
                 <List>
-                    <ListSubheader>Work route</ListSubheader>
+                    <ListSubheader>Commute</ListSubheader>
                     <LinkContainer to="/route/Commute/0">
                         <ListItem button>
-                            <ListItemText primary="Test"/>
+                            <ListItemText primary="Route 0"/>
                         </ListItem>
                     </LinkContainer>
-                    <ListItem button>
-                        <ListItemText primary="Work -> Home"/>
-                    </ListItem>
+                    <LinkContainer to="/route/Commute/1">
+                        <ListItem button>
+                            <ListItemText primary="Route 1"/>
+                        </ListItem>
+                    </LinkContainer>
                 </List>
                 <Divider/>
                 <List>
-                    <ListItem button>
-                        <ListItemText primary="Trash"/>
-                    </ListItem>
-                    <ListItem button component="a" href="#simple-list">
-                        <ListItemText primary="Spam"/>
-                    </ListItem>
+                    <LinkContainer to="/">
+                        <ListItem button>
+                            <ListItemText primary="Home"/>
+                        </ListItem>
+                    </LinkContainer>
                 </List>
             </div>
         );
