@@ -1,4 +1,9 @@
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
+    plugins: [
+        new UglifyJSPlugin({parallel: true})
+    ],
     entry: ['babel-polyfill', __dirname + '/src/index.js'],
     output: {
         path: __dirname + '/dist',
