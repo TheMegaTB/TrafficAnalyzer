@@ -4,7 +4,7 @@
   "description": "Turn traffic data into a CSV",
   "main": "src/main.js",
   "scripts": {
-    "start": "nodemon src/main.js --exec babel-node --presets env",
+    "start": "nodemon src/main.js --exec babel-node --presets env -- $NODE_DEBUG_OPTION",
     "build": "babel src -d dist --preset env,stage-2",
     "serve": "node dist/main.js"
   },
@@ -15,6 +15,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "csv-reader": "^1.0.1",
     "csv-write-stream": "2.0.0",
+    "fs-extra": "^4.0.2",
     "ws": "^3.2.0"
   },
   "devDependencies": {

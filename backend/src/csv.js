@@ -1,13 +1,15 @@
-const fs = require('fs');
+const fs = require('fs-extra');
+const path = require('path');
 const csvWriter = require('csv-write-stream');
 const csvReader = require('csv-reader');
 
 export function writeToCSV(filename, object) {
-    let writer;
+    let writer = csvWriter({sendHeaders: false});
+
+    fs.ensureDirSync(`./${path.dirname(filename)}`);
+
     if (!fs.existsSync(filename))
         writer = csvWriter({ headers: ["weekday", "hours", "duration", "week", "year"]});
-    else
-        writer = csvWriter({sendHeaders: false});
 
     writer.pipe(fs.createWriteStream(filename, { flags: 'a' }));
     writer.write(object);
@@ -16,8 +18,10 @@ export function writeToCSV(filename, object) {
 
 export function readFromCSV(filename) {
     return new Promise((resolve, reject) => {
-        if (!fs.existsSync(filename))
+        if (!fs.existsSync(filename)) {
             reject(`File ${filename} does not exist.`);
+            return;
+        }
 
         const inputStream = fs.createReadStream(filename, 'utf8');
 
