@@ -10,6 +10,10 @@ WORKDIR /usr/src/app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm install
 
+# Set the timezone
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Build the backend
 WORKDIR /usr/src/app/backend
 COPY ./backend/ .
