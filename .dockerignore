@@ -1,4 +1,8 @@
-backend/node_modules
 frontend/node_modules
-backend/npm-debug.log
+frontend/dist
 frontend/npm-debug.log
+
+backend/node_modules
+backend/npm-debug.log
+backend/routes
+backend/dist

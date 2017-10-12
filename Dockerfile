@@ -1,4 +1,4 @@
-FROM node:boron
+FROM node
 
 # Install dependencies for backend
 WORKDIR /usr/src/app/backend
@@ -21,7 +21,6 @@ COPY ./frontend/ .
 RUN npm run build
 
 EXPOSE 8080
-EXPOSE 1337
 
 WORKDIR /usr/src/app/backend
 
