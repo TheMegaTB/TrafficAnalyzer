@@ -107,14 +107,17 @@ export default class Graph extends React.Component {
             columns: [],
             colors: { "EMA": "#B0BEC5" },
             hide: ['EMA'],
-            type: "spline",
-            types: { "EMA": "area-spline" }
+            type: "line",
+            types: { "EMA": "area-line" }
         };
 
         if (this.state.route.datapoints) {
             currentTravelTime = Math.round(this.state.route.datapoints[this.state.route.datapoints.length - 1][2]);
 
-            const percentage = (currentTravelTime - this.state.minimum) / (this.state.maximum - this.state.minimum);
+            let percentage = Math.abs(currentTravelTime - this.state.minimum) / Math.abs(this.state.maximum - this.state.minimum);
+
+            if (percentage < 0) percentage = 0;
+            else if (percentage > 1) percentage = 1;
 
             currentTravelTimeColor = xolor('#5a9d00').gradient('#FF3D00', percentage).hex;
 
