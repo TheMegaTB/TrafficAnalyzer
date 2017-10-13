@@ -19,7 +19,6 @@ const weekdayNames = [
     "Sunday"
 ];
 
-
 export default class Graph extends React.Component {
     constructor(props) {
         super(props);
@@ -28,19 +27,16 @@ export default class Graph extends React.Component {
             "route": {},
             "minimum": 0,
             "maximum": 0
-        }
+        };
 
         this.updateGraphData = this.updateGraphData.bind(this);
     }
 
     updateGraphData() {
-        console.log("UPDATE");
-
         const graph = this;
         requestRoute(this.props.match.params.route, this.props.match.params.direction).then((route) => {
             const maximum = route.datapoints.reduce((a, b) => Math.max(a ? a : 0, b[2]));
             const minimum = route.datapoints.reduce((a, b) => Math.min(a ? a : Infinity, b[2]));
-            console.log(minimum, maximum);
             graph.setState({
                 route,
                 minimum,
@@ -87,7 +83,6 @@ export default class Graph extends React.Component {
                 y: 'Travel duration'
             });
             this.chart.chart.internal.config.axis_x_tick_values = new Array(graphXdelta).fill(0).map((e,i) => i + Math.round(minimumTime));
-            console.log(this.chart.chart.internal);
             this.chart.chart.internal.config.zoom_onzoom = (level) => {
                 graph.zoomLevel = level;
             };
@@ -97,7 +92,7 @@ export default class Graph extends React.Component {
     }
 
     render() {
-        let currentTravelTime = "N/A";
+        let currentTravelDuration = "N/A";
         let currentTravelTimeColor = "#000000";
 
         let routeString = "N/A";
@@ -112,9 +107,11 @@ export default class Graph extends React.Component {
         };
 
         if (this.state.route.datapoints) {
-            currentTravelTime = Math.round(this.state.route.datapoints[this.state.route.datapoints.length - 1][2]);
+            // currentTravelDuration = Math.round(this.state.route.datapoints[this.state.route.datapoints.length - 1][2]);
+            currentTravelDuration = Math.round(this.state.route.currentTravelDuration);
+            // console.log(this.state.route.currentTravelDuration);
 
-            let percentage = Math.abs(currentTravelTime - this.state.minimum) / Math.abs(this.state.maximum - this.state.minimum);
+            let percentage = Math.abs(currentTravelDuration - this.state.minimum) / Math.abs(this.state.maximum - this.state.minimum);
 
             if (percentage < 0) percentage = 0;
             else if (percentage > 1) percentage = 1;
@@ -192,7 +189,7 @@ export default class Graph extends React.Component {
                                     Current time to destination
                                 </Typography>
                                 <Typography type="headline" align="center" style={{color: currentTravelTimeColor}}>
-                                    {currentTravelTime}{currentTravelTime > 1 ? "mins" : "min"}
+                                    {currentTravelDuration}{currentTravelDuration > 1 ? "mins" : "min"}
                                 </Typography>
                             </CardContent>
                         </Card>
@@ -204,7 +201,18 @@ export default class Graph extends React.Component {
                         data={c3data}
                         ref={(chart) => { this.chart = chart; }}
                     />
-                    : "loading"}
+                    :
+                    <Card style={{height: '100%'}}>
+                        <CardContent>
+                            <Typography type="headline" align="center">
+                                Hang tight
+                            </Typography>
+                            <Typography type="body1" align="center" style={{color: "#9E9E9E"}}>
+                                While we crunch the numbers for you
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                }
             </div>
         );
     }

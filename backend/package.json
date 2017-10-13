@@ -17,6 +17,7 @@
     "csv-write-stream": "2.0.0",
     "express": "^4.16.2",
     "fs-extra": "^4.0.2",
+    "get-closest": "0.0.4",
     "ws": "^3.2.0"
   },
   "devDependencies": {

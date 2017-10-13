@@ -12,10 +12,6 @@ app.get('*', function(req, res){
     res.sendFile(path.join(__dirname, '../../frontend/index.html'));
 });
 
-// app.listen(8010, function () {
-//     console.log('Example app listening on port 8080!')
-// });
-
 const server = http.createServer(app);
 
 setupWebsocket(server);
