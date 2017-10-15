@@ -11,7 +11,14 @@ module.exports = {
         filename: 'bundle.js'
     },
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        port: 9000,
+        proxy: {
+            '/api': {
+                target: 'ws://localhost:8080',
+                ws: true
+            }
+        }
     },
     module: {
         rules: [

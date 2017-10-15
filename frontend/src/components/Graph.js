@@ -10,13 +10,13 @@ import 'c3/c3.css';
 import {requestRoute} from "../api/data";
 
 const weekdayNames = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
 ];
 
 export default class Graph extends React.Component {
@@ -73,7 +73,10 @@ export default class Graph extends React.Component {
             const minimumTime = this.state.route.datapoints.reduce((a, b) => Math.min(a ? a : Infinity, b[1]));
             const graphXdelta = Math.round(maximumTime - minimumTime);
 
-            this.chart.chart.focus(weekdayNames[new Date().getDay() - 1]);
+            const day = new Date().getDay();
+            if (day !== 0 && day !== 6) // Hide Saturday & Sunday if we don't have weekend right now
+                this.chart.chart.hide([weekdayNames[0], weekdayNames[6]]);
+            this.chart.chart.focus(weekdayNames[day]);
             this.chart.chart.xgrids([
                 {value: hoursSinceMidnight, text: 'Current time'}
             ]);
@@ -128,7 +131,8 @@ export default class Graph extends React.Component {
 
             // Go through each weekday, sort the datapoints and add them to the list
             weekdays.forEach((weekday, i) => {
-                const weekdayName = weekdayNames[i - 1];
+                const weekdayName = weekdayNames[i];
+                console.log(i, weekdayName);
 
                 weekday.sort((a, b) => a[1] - b[1]);
 

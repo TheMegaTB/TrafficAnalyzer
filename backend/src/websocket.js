@@ -3,11 +3,11 @@ import {getRoute, getRouteMap} from "./routes";
 const config = require("../config.json");
 const WebSocket = require('ws');
 
-// const wss = new WebSocket.Server({ port: config.websocket.port });
-
 export function setupWebsocket(server) {
     const wss = new WebSocket.Server({ server });
-    wss.on('connection', function connection(ws) {
+    wss.on('connection', function connection(ws, req) {
+        console.log(req.url);
+
         ws.on('message', function incoming(message) {
             console.log('received: %s', message);
 
