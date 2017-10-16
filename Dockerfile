@@ -24,8 +24,10 @@ WORKDIR /usr/src/app/frontend
 COPY ./frontend/ .
 RUN npm run build
 
-EXPOSE 8080
-
+# Link the data directory into the routes folder of the backend
 WORKDIR /usr/src/app/backend
+RUN ln -s /stor routes
+
+EXPOSE 8080
 
 CMD [ "npm", "run", "serve" ]
