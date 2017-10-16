@@ -110,9 +110,7 @@ export default class Graph extends React.Component {
         };
 
         if (this.state.route.datapoints) {
-            // currentTravelDuration = Math.round(this.state.route.datapoints[this.state.route.datapoints.length - 1][2]);
             currentTravelDuration = Math.round(this.state.route.currentTravelDuration);
-            // console.log(this.state.route.currentTravelDuration);
 
             let percentage = Math.abs(currentTravelDuration - this.state.minimum) / Math.abs(this.state.maximum - this.state.minimum);
 
@@ -132,7 +130,6 @@ export default class Graph extends React.Component {
             // Go through each weekday, sort the datapoints and add them to the list
             weekdays.forEach((weekday, i) => {
                 const weekdayName = weekdayNames[i];
-                console.log(i, weekdayName);
 
                 weekday.sort((a, b) => a[1] - b[1]);
 
