@@ -5,7 +5,6 @@ import 'typeface-roboto';
 import './styles/main.css';
 
 import './api/data';
-import './api/draw';
 import Navigation from './components/Navigation';
 import {
     BrowserRouter as Router,
