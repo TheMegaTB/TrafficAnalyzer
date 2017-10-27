@@ -26,12 +26,12 @@ class RoutesList extends React.Component {
                     <ListSubheader>Commute</ListSubheader>
                     <LinkContainer to="/route/Commute/0">
                         <ListItem button>
-                            <ListItemText primary="To Home"/>
+                            <ListItemText primary="To Work"/>
                         </ListItem>
                     </LinkContainer>
                     <LinkContainer to="/route/Commute/1">
                         <ListItem button>
-                            <ListItemText primary="To Work"/>
+                            <ListItemText primary="To Home"/>
                         </ListItem>
                     </LinkContainer>
                 </List>
@@ -40,12 +40,12 @@ class RoutesList extends React.Component {
                     <ListSubheader>Commute</ListSubheader>
                     <LinkContainer to="/route/Lars/0">
                         <ListItem button>
-                            <ListItemText primary="To NewHome"/>
+                            <ListItemText primary="To Work"/>
                         </ListItem>
                     </LinkContainer>
                     <LinkContainer to="/route/Lars/1">
                         <ListItem button>
-                            <ListItemText primary="To Work"/>
+                            <ListItemText primary="To NewHome"/>
                         </ListItem>
                     </LinkContainer>
                 </List>
