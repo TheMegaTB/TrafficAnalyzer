@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const app = express();
+const config = require('../routes/config');
 
 app.use('/', express.static(path.join(__dirname, '../../frontend')));
 
@@ -20,8 +21,9 @@ server.listen(8080, function listening() {
     console.log('Listening on %d', server.address().port);
 });
 
+console.log("Refresh interval: ", config.interval);
 
 populateRoutes().then(() => {
     tickRoutes();
-    setInterval(tickRoutes, 2 * 60 * 1000);
+    setInterval(tickRoutes, config.interval);
 }).catch((err) => console.error(err));

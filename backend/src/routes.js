@@ -2,7 +2,7 @@ import {readFromCSV, writeToCSV} from "./csv";
 import {getTravelObject} from "./data-fetching";
 import {Graph} from "./graph";
 
-const config = require("../config.json");
+const config = require("../routes/config.json");
 
 const routes = {
     // "someRoute": [

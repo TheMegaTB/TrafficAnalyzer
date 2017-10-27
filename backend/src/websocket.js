@@ -1,6 +1,6 @@
 import {getRoute, getRouteMap} from "./routes";
 
-const config = require("../config.json");
+const config = require("../routes/config.json");
 const WebSocket = require('ws');
 
 export function setupWebsocket(server) {

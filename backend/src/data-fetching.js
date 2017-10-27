@@ -1,4 +1,4 @@
-const config = require("../config.json");
+const config = require("../routes/config.json");
 const googleMapsClient = require('@google/maps').createClient({
     key: config.api.key
 });
