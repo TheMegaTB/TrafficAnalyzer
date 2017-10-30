@@ -1,8 +1,10 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     plugins: [
-        new UglifyJSPlugin({parallel: true})
+        new UglifyJSPlugin({parallel: true}),
+        new webpack.EnvironmentPlugin(['NODE_ENV']),
     ],
     entry: ['babel-polyfill', __dirname + '/src/index.js'],
     output: {
