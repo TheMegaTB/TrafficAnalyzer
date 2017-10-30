@@ -1,5 +1,6 @@
 const ReconnectingWebSocket = require('reconnecting-websocket');
-export const rws = new ReconnectingWebSocket('ws://' + window.location.host + "/api");
+const websocketURL = (process.env.NODE_ENV === 'production' ? 'wss://' : 'ws://') + window.location.host + '/api';
+export const rws = new ReconnectingWebSocket(websocketURL);
 
 const callbacks = {};
 const pendingMessages = [];
