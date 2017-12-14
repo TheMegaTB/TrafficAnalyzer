@@ -38,14 +38,14 @@ class RoutesList extends React.Component {
                 <Divider/>
                 <List>
                     <ListSubheader>Commute</ListSubheader>
-                    <LinkContainer to="/route/Lars/0">
+                    <LinkContainer to="/route/NAKCommute/0">
                         <ListItem button>
                             <ListItemText primary="To Work"/>
                         </ListItem>
                     </LinkContainer>
-                    <LinkContainer to="/route/Lars/1">
+                    <LinkContainer to="/route/NAKCommute/1">
                         <ListItem button>
-                            <ListItemText primary="To NewHome"/>
+                            <ListItemText primary="To NAK"/>
                         </ListItem>
                     </LinkContainer>
                 </List>
