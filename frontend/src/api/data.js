@@ -34,7 +34,7 @@ rws.callFunction = (obj) => {
             setTimeout(() => {
                 reject("RPC timeout.");
                 delete callbacks[token];
-            }, 5000)
+            }, 60000)
         ];
     });
 };
